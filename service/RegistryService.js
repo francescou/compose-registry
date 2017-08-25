@@ -58,12 +58,12 @@ function search(query) {
 
 function yml(id, resolve, reject) {
   if (!ymls[id]) {
-    return reject(Writer.respondWithCode(404));
+    return reject(Writer.respondWithCode(404, {"err": "project " + id + " not found"}));
   }
   var p = ymls[id].path;
   fs.readFile(p, 'utf8', function (err,data) {
     if (err) {
-      return reject(Writer.respondWithCode(500));
+      return reject(Writer.respondWithCode(500, err));
     }
     resolve({content: data});
   });
