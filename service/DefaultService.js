@@ -1,5 +1,6 @@
 'use strict';
 
+var RegistryService = require('./RegistryService');
 
 /**
  * find docker compose stacks
@@ -10,19 +11,7 @@
  **/
 exports.search = function(query) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ {
-  "name" : "name",
-  "id" : 0
-}, {
-  "name" : "name",
-  "id" : 0
-} ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    resolve({items: RegistryService.search(query)});
   });
 }
 
@@ -36,15 +25,7 @@ exports.search = function(query) {
  **/
 exports.yml = function(id) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "content" : "content"
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    RegistryService.yml(id, resolve, reject);
   });
 }
 
