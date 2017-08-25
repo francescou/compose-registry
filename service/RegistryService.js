@@ -5,6 +5,8 @@ var base64 = require('base-64');
 var fs = require('fs');
 var _ = require("lodash");
 
+var Writer = require('../utils/writer');
+
 var PATH = "/projects/";
 var FILENAME = "docker-compose.yml";
 
@@ -55,10 +57,13 @@ function search(query) {
 
 
 function yml(id, resolve, reject) {
+  if (!ymls[id]) {
+    return reject(Writer.respondWithCode(404));
+  }
   var p = ymls[id].path;
   fs.readFile(p, 'utf8', function (err,data) {
     if (err) {
-      return reject();
+      return reject(Writer.respondWithCode(500));
     }
     resolve({content: data});
   });
