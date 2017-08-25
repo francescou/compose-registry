@@ -1,7 +1,7 @@
 Compose Registry
 ===
 
-project is still in eary alpha stage
+Disclaimer: This is a work in progress and software is still in alpha stage.
 
 ## Running the server
 To run the server, run:
