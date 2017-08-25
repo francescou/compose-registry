@@ -11,7 +11,8 @@ docker run --rm \
   --name compose-registry \
   --volume $(pwd)/demo-projects/:/projects/:ro \
   --publish 8080:8080 \
-  francescou/compose-registry
+  --read-only \
+  francescou/compose-registry:0.1
 ```
 
 To view the Swagger UI interface:
@@ -33,3 +34,4 @@ docker run --rm \
   generate -l python-flask -i /data/swagger.yaml -o /output/
 ```
 
+documentation to generate a server stub for a couple different frameworks: [Server stub generator HOWTO](https://github.com/swagger-api/swagger-codegen/wiki/Server-stub-generator-HOWTO)
