@@ -35,7 +35,7 @@ glob(PATH + "**/" + FILENAME, {}, function (er, files) {
     };
   });
 
-  console.log(Object.keys(ymls).length + ' projects indexed: ' + _.map(_.values(ymls), x => x.path).join(', '));
+  console.log(Object.keys(ymls).length + ' projects found: ' + _.map(_.values(ymls), x => x.path).join(' '));
 
 });
 
