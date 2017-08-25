@@ -1,0 +1,85 @@
+---
+swagger: "2.0"
+info:
+  description: "Docker Compose Registry"
+  version: "1.0.0"
+  title: "Docker Compose Registry"
+  contact:
+    email: "francesco.uliana@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+basePath: "/api/v1"
+paths:
+  /search:
+    get:
+      summary: "find docker compose stacks"
+      description: "find compose stacks by keywords"
+      operationId: "search"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "query"
+        in: "query"
+        description: "keywords"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/composition_response"
+        400:
+          description: "Invalid value"
+      security:
+      - api_key: []
+      x-swagger-router-controller: "Default"
+  /yml:
+    get:
+      summary: "get yml"
+      description: "get yml"
+      operationId: "yml"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "query"
+        description: "composition id"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/yml_response"
+        400:
+          description: "Invalid value"
+      security:
+      - api_key: []
+      x-swagger-router-controller: "Default"
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "x-key"
+    in: "header"
+definitions:
+  yml_response:
+    properties:
+      content:
+        type: "string"
+        description: "YML content"
+    example:
+      content: "content"
+  composition_response:
+    properties:
+      id:
+        type: "integer"
+        description: "the composition id"
+      name:
+        type: "string"
+        description: "the composition name"
+    example:
+      name: "name"
+      id: 0
