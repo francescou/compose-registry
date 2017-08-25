@@ -7,7 +7,11 @@ Disclaimer: This is a work in progress and software is still in alpha stage.
 To run the server, run:
 
 ```
-docker run --rm --name compose-registry --volume $(pwd)/demo-projects/:/projects/:ro --publish 8080:8080 francescou/compose-registry
+docker run --rm \
+  --name compose-registry \
+  --volume $(pwd)/demo-projects/:/projects/:ro \
+  --publish 8080:8080 \
+  francescou/compose-registry
 ```
 
 To view the Swagger UI interface:
