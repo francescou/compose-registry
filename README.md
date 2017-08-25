@@ -12,7 +12,7 @@ docker run --rm \
   --volume $(pwd)/demo-projects/:/projects/:ro \
   --publish 8080:8080 \
   --read-only \
-  francescou/compose-registry:0.1
+  francescou/compose-registry:0.2
 ```
 
 To view the Swagger UI interface:
